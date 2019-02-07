@@ -1,25 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Words
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Famous Last Words
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <!--<ion-card-header>-->
-      <!--&lt;!&ndash;<ion-card-subtitle>{{data1['country']}}</ion-card-subtitle>&ndash;&gt;-->
-      <!--<ion-card-title>{{data1['text']}}</ion-card-title>-->
-    <!--</ion-card-header>-->
+    <ion-card *ngFor="let word of words">
+        <ion-card-header>
+        <ion-card-subtitle>No# {{word['textid']}}</ion-card-subtitle>
+        <ion-card-title>{{word['text']}}</ion-card-title>
+        </ion-card-header>
 
-    <ion-card-content>
-      <ul>
-        <li *ngFor="let word of data1">{{word['text']}}</li>
-      </ul>
-    </ion-card-content>
-  </ion-card>
+        <!--<ion-card-content>-->
+            <!--{{word['text']}}-->
+        <!--</ion-card-content>-->
+    </ion-card>
 </ion-content>
