@@ -15,7 +15,7 @@ export class WordsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.getData();
+        this.getDataOnce();
     }
 
     async getData() {
@@ -25,7 +25,22 @@ export class WordsPage implements OnInit {
         await loading.present();
         this.api.getData()
             .subscribe(res => {
-                console.log('async getData');
+                this.words = res[0];
+                loading.dismiss();
+            }, err => {
+                console.log(err);
+                loading.dismiss();
+            });
+    }
+
+    async getDataOnce() {
+        const loading = await this.loadingController.create({
+            message: 'Loading'
+        });
+
+        await loading.present();
+        this.api.getDataOnce()
+            .subscribe(res => {
                 this.words = res[0];
                 loading.dismiss();
             }, err => {

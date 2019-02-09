@@ -16,7 +16,7 @@ export class HomePage {
     }
 
     ngOnInit() {
-        this.getData();
+        this.getDataOnce();
     }
 
 
@@ -29,6 +29,24 @@ export class HomePage {
         this.api.getData()
             .subscribe(res => {
                 console.log('async getData');
+                this.words = res[0];
+                this.getRandom();
+                loading.dismiss();
+            }, err => {
+                console.log(err);
+                loading.dismiss();
+            });
+    }
+
+    async getDataOnce() {
+        const loading = await this.loadingController.create({
+            message: 'Loading'
+        });
+
+        await loading.present();
+        this.api.getDataOnce()
+            .subscribe(res => {
+                console.log('homepage getDataOnce');
                 this.words = res[0];
                 this.getRandom();
                 loading.dismiss();

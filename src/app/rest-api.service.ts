@@ -11,7 +11,7 @@ const apiUrl = 'http://axehigh.com/rpg/flw2/index.php/listdato:1:01-01-2010';
 })
 export class RestApiService {
 
-    wordList: any;
+    wordList: Observable <any>;
 
     constructor(private http: HttpClient) {
     }
@@ -25,16 +25,13 @@ export class RestApiService {
         return forkJoin([response1/*,response2, response3, response4*/]);
     }
 
-    getDataOnce() {
-        if (this.wordList !== null && typeof this.wordList === 'object') {
-            return this.wordList;
-        } else {
+    getDataOnce() : Observable<any>  {
+        if (!this.wordList){
+            console.log('REST API: ' + apiUrl);
             const response1 = this.http.get(apiUrl);
-            console.log('Call GetDataOnce()');
-            this.wordList = response1;
-            return this.wordList;
+            this.wordList = forkJoin([response1]);
         }
-
+        return this.wordList;
     }
 
 
