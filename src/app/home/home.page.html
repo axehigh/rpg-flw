@@ -1,23 +1,23 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
+<ion-header color="dark">
+    <ion-toolbar color="dark">
+        <ion-buttons color="dark" slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>
+        <ion-title color="light">
             Famous Last Words
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content >
-    <ion-card class="welcome-card">
-        <img src="/assets/tomb.png" height="50%">
-        <ion-card-content>
+<ion-content color="dark">
+    <ion-card>
+
+        <ion-card-content color="medium">
             <p>Let's not forget, remember the PC Deaths.</p>
         </ion-card-content>
         <ion-card-content>
-            <div *ngIf="word != null">
-                <p [innerHTML]="word['text']"></p>
+            <div *ngIf="word != null" >
+                <p color="danger"  class="welcome-text" [innerHTML]="word['text']"></p>
             </div>
         </ion-card-content>
     </ion-card>
@@ -25,6 +25,6 @@
 
 <ion-footer padding-bottom="10px">
     <div>
-        <ion-button expand="full" color="danger" (click)="getRandom()">Remember</ion-button>
+        <ion-button expand="full" color="tertiary" (click)="getRandom()">Remember</ion-button>
     </div>
 </ion-footer>

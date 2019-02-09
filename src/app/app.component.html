@@ -1,17 +1,17 @@
-<ion-app>
-  <ion-split-pane>
+<ion-app color="dark">
+  <ion-split-pane color="dark">
     <ion-menu>
-      <ion-header>
-        <ion-toolbar>
+      <ion-header color="dark">
+        <ion-toolbar color="dark">
           <ion-title>Menu</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
+      <ion-content color="dark">
+        <ion-list color="dark">
+          <ion-menu-toggle color="dark" auto-hide="false" *ngFor="let p of appPages">
+            <ion-item color="dark" [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon color="light" slot="start" [name]="p.icon"></ion-icon>
+              <ion-label color="light">
                 {{p.title}}
               </ion-label>
             </ion-item>
