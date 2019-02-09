@@ -28,7 +28,6 @@ export class HomePage {
         await loading.present();
         this.api.getData()
             .subscribe(res => {
-                console.log('async getData');
                 this.words = res[0];
                 this.getRandom();
                 loading.dismiss();
@@ -46,7 +45,6 @@ export class HomePage {
         await loading.present();
         this.api.getDataOnce()
             .subscribe(res => {
-                console.log('homepage getDataOnce');
                 this.words = res[0];
                 this.getRandom();
                 loading.dismiss();
@@ -59,8 +57,6 @@ export class HomePage {
     getRandom() {
         const randomize = Math.floor(Math.random() * this.words.length);
         this.word = this.words[randomize];
-        console.log(JSON.stringify(this.word));
-        console.log('button click: ' + randomize + ' , ' + this.word);
     }
 
 

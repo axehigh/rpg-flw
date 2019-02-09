@@ -9,14 +9,19 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content >
-    <ion-card class="welcome-card">
-        <img src="/assets/tomb.png" height="50%">
+<ion-content>
+    <ion-note>
+        <div class="welcome-text">
+        Let's not forget, remember the PC Deaths.
+        </div>
+    </ion-note>
+    <ion-img class="welcome-img" src="/assets/tomb.png"></ion-img>
+    <ion-card *ngIf="word != null">
+        <ion-card-header>
+            <ion-card-subtitle>No# {{word['textid']}}</ion-card-subtitle>
+        </ion-card-header>
         <ion-card-content>
-            <p>Let's not forget, remember the PC Deaths.</p>
-        </ion-card-content>
-        <ion-card-content>
-            <div *ngIf="word != null">
+            <div>
                 <p [innerHTML]="word['text']"></p>
             </div>
         </ion-card-content>

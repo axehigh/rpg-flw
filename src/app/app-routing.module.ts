@@ -11,9 +11,6 @@ const routes: Routes = [
         path: 'home', loadChildren: './home/home.module#HomePageModule'
     },
     {
-        path: 'list', loadChildren: './list/list.module#ListPageModule'
-    },
-    {
         path: 'about', loadChildren: './about/about.module#AboutPageModule'
     },
     {

@@ -13,11 +13,7 @@
     <ion-card *ngFor="let word of words">
         <ion-card-header>
         <ion-card-subtitle>No# {{word['textid']}}</ion-card-subtitle>
-        <ion-card-title>{{word['text']}}</ion-card-title>
+        <ion-card-title><p [innerHTML]="word['text']"></p></ion-card-title>
         </ion-card-header>
-
-        <!--<ion-card-content>-->
-            <!--{{word['text']}}-->
-        <!--</ion-card-content>-->
     </ion-card>
 </ion-content>

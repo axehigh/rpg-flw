@@ -25,9 +25,9 @@ export class RestApiService {
         return forkJoin([response1/*,response2, response3, response4*/]);
     }
 
-    getDataOnce() : Observable<any>  {
-        if (!this.wordList){
-            console.log('REST API: ' + apiUrl);
+    getDataOnce(): Observable<any>  {
+        if (!this.wordList) {
+            console.debug('REST API: ' + apiUrl);
             const response1 = this.http.get(apiUrl);
             this.wordList = forkJoin([response1]);
         }
