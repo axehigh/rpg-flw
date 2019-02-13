@@ -10,7 +10,9 @@
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <fa-icon slot="start" *ngIf="p.icon === 'faBookDead'      " [icon]="faBookDead"></fa-icon>
+              <fa-icon slot="start" *ngIf="p.icon === 'faChessRook'     " [icon]="faChessRook"></fa-icon>
+              <fa-icon slot="start" *ngIf="p.icon === 'faQuestionCircle'" [icon]="faQuestionCircle"></fa-icon>
               <ion-label>
                 {{p.title}}
               </ion-label>

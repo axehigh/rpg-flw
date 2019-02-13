@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {LoadingController} from '@ionic/angular';
 import {RestApiService} from '../rest-api.service';
 
+import { faBookDead,faChessRook } from '@fortawesome/free-solid-svg-icons';
+
+
 @Component({
     selector: 'app-home',
     templateUrl: 'home.page.html',
@@ -14,6 +17,10 @@ export class HomePage {
 
     constructor(public api: RestApiService, public loadingController: LoadingController) {
     }
+
+    //icons
+    faBookDead = faBookDead;
+    faChessRook = faChessRook;
 
     ngOnInit() {
         this.getDataOnce();

@@ -4,26 +4,35 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { faBookDead,faChessRook,faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+
+  //Icons
+  faBookDead = faBookDead;
+  faChessRook = faChessRook;
+  faQuestionCircle=faQuestionCircle;
+
   public appPages = [
     {
       title: 'Main Gate',
       url: '/home',
-      icon: 'home'
+      icon: 'faChessRook'
     },
     {
       title: 'Famous Last Words',
       url: '/words',
-      icon: 'create'
+      icon: 'faBookDead'
     },
     {
       title: 'About',
       url: '/about',
-      icon: 'help'
+      icon: 'faQuestionCircle'
     }
   ];
 
