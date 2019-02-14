@@ -18,21 +18,6 @@ export class WordsPage implements OnInit {
         this.getDataOnce();
     }
 
-    async getData() {
-        const loading = await this.loadingController.create({
-            message: 'Loading'
-        });
-        await loading.present();
-        this.api.getData()
-            .subscribe(res => {
-                this.words = res[0];
-                loading.dismiss();
-            }, err => {
-                console.log(err);
-                loading.dismiss();
-            });
-    }
-
     async getDataOnce() {
         const loading = await this.loadingController.create({
             message: 'Loading'
