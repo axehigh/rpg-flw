@@ -1,18 +1,43 @@
 <ion-app>
   <ion-split-pane>
     <ion-menu>
+
       <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
+        <ion-toolbar color="dark" class="user-profile">
+
+          <ion-item margin-bottom>
+            <ion-avatar slot="start" class="user-avatar">
+              <img src="assets/tomb.png">
+            </ion-avatar>
+            <ion-label>
+              <ion-text color="medium">
+                <h1><strong>Famous Last Words</strong></h1>
+              </ion-text>
+              <ion-text color="secondary">
+                <h3>
+                  Let's not forget their Deaths
+                </h3>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+
         </ion-toolbar>
       </ion-header>
-      <ion-content>
+
+
+
+      <ion-content class="bg-profile">
+
+        <ion-list-header color="dark">
+          <ion-label>Menu</ion-label>
+        </ion-list-header>
+
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <fa-icon slot="start" *ngIf="p.icon === 'faBookDead'      " [icon]="faBookDead"></fa-icon>
-              <fa-icon slot="start" *ngIf="p.icon === 'faChessRook'     " [icon]="faChessRook"></fa-icon>
-              <fa-icon slot="start" *ngIf="p.icon === 'faQuestionCircle'" [icon]="faQuestionCircle"></fa-icon>
+            <ion-item  [routerDirection]="'root'" [routerLink]="[p.url]" color="primary">
+              <fa-icon color="light" slot="start" *ngIf="p.icon === 'faBookDead'      " [icon]="faBookDead"></fa-icon>
+              <fa-icon color="light" slot="start" *ngIf="p.icon === 'faChessRook'     " [icon]="faChessRook"></fa-icon>
+              <fa-icon color="light" slot="start" *ngIf="p.icon === 'faQuestionCircle'" [icon]="faQuestionCircle"></fa-icon>
               <ion-label>
                 {{p.title}}
               </ion-label>

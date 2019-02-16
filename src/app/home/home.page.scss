@@ -1,28 +1,45 @@
-.welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
-}
+:host {
+  ion-content, ion-footer {
+    --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
+  }
 
-.footer-text {
-  margin: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
-}
+  .welcome-card ion-img {
+    max-height: 35vh;
+    overflow: hidden;
+  }
 
-.card-text-large{
-  font-size: larger;
-}
 
-.welcome-img {
-  margin: auto;
-  width: 250px;
-}
 
-.welcome-fa-icon {
-  margin: auto;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  .footer-div {
+    width: 100%;
+    position: absolute;
+    bottom:20px;
+  }
 
+  .footer-text{
+    text-align: center;
+    margin:auto;
+  }
+  .footer-button{
+    width:80%;
+    margin:auto;
+    padding-bottom: 10px;
+  }
+
+  .card-text-large {
+    font-size:18px;
+  }
+
+  .welcome-img {
+    margin: auto;
+    width: 250px;
+  }
+
+  .welcome-fa-icon {
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+  }
 }

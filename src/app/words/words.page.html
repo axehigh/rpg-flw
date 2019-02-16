@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -11,10 +11,12 @@
 
 <ion-content padding>
     <ion-list *ngFor="let word of words">
-        <ion-item lines="full">
+        <ion-item>
             <ion-label text-wrap>
-                <ion-text>No# {{word['textid']}}</ion-text>
-                <p [innerHTML]="word['text']"></p>
+                <ion-text color="dark">No# {{word['textid']}}</ion-text>
+                <p>
+                    <ion-text color="primary" [innerHTML]="word['text']"></ion-text>
+                </p>
             </ion-label>
         </ion-item>
     </ion-list>
