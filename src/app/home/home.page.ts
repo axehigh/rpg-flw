@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LoadingController} from '@ionic/angular';
 import {RestApiService} from '../rest-api.service';
 
-import { faBookDead,faChessRook } from '@fortawesome/free-solid-svg-icons';
+import {faBookDead, faChessRook} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -27,20 +27,25 @@ export class HomePage {
     }
 
     async getDataOnce() {
-        const loading = await this.loadingController.create({
-            message: 'Loading'
-        });
+        try {
 
-        await loading.present();
-        this.api.getDataOnce()
-            .subscribe(res => {
-                this.words = res[0];
-                this.getRandom();
-                loading.dismiss();
-            }, err => {
-                console.log(err);
-                loading.dismiss();
+            const loading = await this.loadingController.create({
+                message: 'Loading'
             });
+
+            await loading.present();
+            this.api.getDataOnce()
+                .subscribe(res => {
+                    this.words = res[0];
+                    this.getRandom();
+                    loading.dismiss();
+                }, err => {
+                    console.log(err);
+                    loading.dismiss();
+                });
+        } catch (err) {
+            console.log("Failed Home Page: " + JSON.stringify(err, ["message", "arguments", "type", "name"]))
+        }
     }
 
     getRandom() {

@@ -4,16 +4,18 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>
-            Famous Last Words
+            Famous Last Words (RPG) - Lite
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-card *ngFor="let word of words">
-        <ion-card-header>
-        <ion-card-subtitle>No# {{word['textid']}}</ion-card-subtitle>
-        <ion-card-title><p [innerHTML]="word['text']"></p></ion-card-title>
-        </ion-card-header>
-    </ion-card>
+    <ion-list *ngFor="let word of words">
+        <ion-item lines="full">
+            <ion-label text-wrap>
+                <ion-text>No# {{word['textid']}}</ion-text>
+                <p [innerHTML]="word['text']"></p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>
