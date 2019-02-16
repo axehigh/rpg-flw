@@ -4,32 +4,45 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>
-            Famous Last Words (RPG) - Lite
+            Famous Last Words
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-note>
-        <div class="welcome-text">
-        Let's not forget, remember the PC Deaths.
-            <fa-icon [icon]="faBookDead" size="4x"></fa-icon>
-        </div>
-    </ion-note>
-    <ion-img class="welcome-img" src="/assets/tomb.png"></ion-img>
+
+
     <ion-card *ngIf="word != null">
         <ion-card-header>
             <ion-card-subtitle>No# {{word['textid']}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-            <div>
-                <p [innerHTML]="word['text']"></p>
+            <div class="card-text-large">
+                <p class="card-text-large"  [innerHTML]="word['text']"></p>
             </div>
         </ion-card-content>
     </ion-card>
+
+
+
+
 </ion-content>
 
+
 <ion-footer padding-bottom="10px">
+
+    <ion-note>
+
+        <div class="welcome-fa-icon">
+            <fa-icon class="welcome-fa-icon" [icon]="faBookDead" size="6x"></fa-icon>
+        </div>
+
+        <div class="footer-text">
+            Let's not forget, remember the PC Deaths.
+        </div>
+
+    </ion-note>
+
     <div>
         <ion-button expand="full" color="danger" (click)="getRandom()">Remember</ion-button>
     </div>

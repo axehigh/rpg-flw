@@ -3,13 +3,26 @@
   overflow: hidden;
 }
 
-.welcome-text {
+.footer-text {
   margin: auto;
   padding-top: 10px;
+  padding-bottom: 10px;
   text-align: center;
+}
+
+.card-text-large{
+  font-size: larger;
 }
 
 .welcome-img {
   margin: auto;
   width: 250px;
+}
+
+.welcome-fa-icon {
+  margin: auto;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
 }
