@@ -10,14 +10,14 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list *ngFor="let word of words">
-        <ion-item>
-            <ion-label text-wrap>
-                <ion-text color="dark">No# {{word['textid']}}</ion-text>
-                <p>
-                    <ion-text color="primary" [innerHTML]="word['text']"></ion-text>
-                </p>
-            </ion-label>
-        </ion-item>
-    </ion-list>
+    <ion-virtual-scroll [items]="words" approxItemHeight="100px">
+            <ion-item *virtualItem="let word;">
+                <ion-label text-wrap>
+                    <ion-text color="dark">No# {{word['textid']}}</ion-text>
+                    <p>
+                        <ion-text color="primary" [innerHTML]="word['text']"></ion-text>
+                    </p>
+                </ion-label>
+            </ion-item>
+    </ion-virtual-scroll>
 </ion-content>
