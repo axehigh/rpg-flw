@@ -4,14 +4,15 @@ import {Observable, of, throwError} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import {forkJoin} from 'rxjs';
 
-const apiUrl = 'http://axehigh.com/rpg/flw2/index.php/listdato:1:01-01-2010';
+// const apiUrl = 'http://axehigh.com/rpg/flw2/index.php/listdato:1:01-01-2010';
+const apiUrl = 'http://axehigh.com/rpg/flw2/index.php/listdato:0:01-01-2010';
 
 @Injectable({
     providedIn: 'root'
 })
 export class RestApiService {
 
-    thisname : string;
+    thisname: string;
     wordList: Observable<any>;
 
     constructor(private http: HttpClient) {

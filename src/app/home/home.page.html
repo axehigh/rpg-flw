@@ -16,7 +16,10 @@
                 <ion-card-subtitle color="medium">No# {{word['textid']}}</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content color="primary">
-                <ion-text class="text18" color="primary" [innerHTML]="word['text']"></ion-text>
+
+                <ion-text
+                          [ngClass]="(word['text'].length > 150) ? 'text12' : 'text18' "
+                          color="primary" [innerHTML]="word['text']"></ion-text>
             </ion-card-content>
         </ion-card>
     </div>
