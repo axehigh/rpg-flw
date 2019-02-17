@@ -4,7 +4,7 @@ import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 
-import {faBookDead, faChessRook, faQuestionCircle} from '@fortawesome/free-solid-svg-icons';
+import {faBookDead, faChessRook, faQuestionCircle, faDungeon, faHeart} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -19,22 +19,24 @@ export class AppComponent {
     faBookDead = faBookDead;
     faChessRook = faChessRook;
     faQuestionCircle = faQuestionCircle;
+    faDungeon = faDungeon;
+    faHeart = faHeart;
 
     public appPages = [
         {
-            title: 'Main Gate',
+            title: 'Door of death',
             url: '/home',
-            icon: 'faChessRook'
+            icon: 'faDungeon'
         },
         {
-            title: 'Book of Famous Last Words',
+            title: 'Tome of death',
             url: '/words',
             icon: 'faBookDead'
         },
         {
-            title: 'About',
+            title: 'Let´s not forget',
             url: '/about',
-            icon: 'faQuestionCircle'
+            icon: 'faHeart'
         }
     ];
 
