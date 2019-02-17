@@ -1,8 +1,8 @@
 {
-  "name": "rpg-flw-4",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "name": "RPG FLW",
+  "version": "2.0.0",
+  "author": "Oddbjorn Lona",
+  "homepage": "https://axehigh.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

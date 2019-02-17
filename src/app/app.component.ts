@@ -24,12 +24,12 @@ export class AppComponent {
 
     public appPages = [
         {
-            title: 'Door of death',
+            title: 'Famous last word',
             url: '/home',
             icon: 'faDungeon'
         },
         {
-            title: 'Tome of death',
+            title: 'Tome of last words',
             url: '/words',
             icon: 'faBookDead'
         },

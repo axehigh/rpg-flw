@@ -21,9 +21,9 @@ export class WordsPage implements OnInit {
     async getDataOnce() {
 
         try {
-
+            let loading: any;
             if (!this.api.loaded) {
-                const loading = await this.loadingController.create({
+                loading = await this.loadingController.create({
                     message: 'Loading'
                 });
 
@@ -33,10 +33,14 @@ export class WordsPage implements OnInit {
             this.api.getDataOnce()
                 .subscribe(res => {
                     this.words = res[0];
-                    // loading.dismiss();
+                    if (loading) {
+                        loading.dismiss();
+                    }
                 }, err => {
                     console.log(err);
-                    // loading.dismiss();
+                    if (loading) {
+                        loading.dismiss();
+                    }
                 });
         } catch (err) {
             console.log("Failed Word Page: " + JSON.stringify(err, ["message", "arguments", "type", "name"]))
