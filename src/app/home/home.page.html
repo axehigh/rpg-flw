@@ -10,20 +10,21 @@
 </ion-header>
 
 <ion-content>
-    <ion-card *ngIf="word != null">
-        <ion-card-header>
-            <ion-card-subtitle color="dark">No# {{word['textid']}}</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content color="primary">
-            <ion-text class="card-text-large" color="primary" [innerHTML]="word['text']"></ion-text>
-        </ion-card-content>
-    </ion-card>
-
+    <div class="div-center">
+        <ion-card *ngIf="word != null" color="medium" class="card-opacity">
+            <ion-card-header>
+                <ion-card-subtitle color="medium">No# {{word['textid']}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content color="primary">
+                <ion-text class="text18" color="primary" [innerHTML]="word['text']"></ion-text>
+            </ion-card-content>
+        </ion-card>
+    </div>
     <div class="footer-div">
-        <ion-button class="footer-button" shape="round" expand="block" color="secondary" (click)="getRandom()">
+        <ion-button class="footer-button" shape="round" size="large"
+                    expand="block" color="secondary" (click)="getRandom()">
             REMEMBER
         </ion-button>
-        <p class="footer-text"> Let's not forget, remember the PC Deaths.</p>
     </div>
 </ion-content>
 

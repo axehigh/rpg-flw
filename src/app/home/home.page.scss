@@ -1,6 +1,11 @@
 :host {
   ion-content, ion-footer {
-    --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
+    --background: url('../../assets/background_bw.jpg') no-repeat 100% 100%;
+    //linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light)),
+  }
+
+  ion-card {
+    --background: linear-gradient(- 135 deg, var(--ion-color-medium), var(--ion-color-light)),
   }
 
   .welcome-card ion-img {
@@ -8,27 +13,26 @@
     overflow: hidden;
   }
 
-
-
   .footer-div {
     width: 100%;
     position: absolute;
-    bottom:20px;
+    bottom: 20px;
   }
 
-  .footer-text{
+
+  .footer-text {
+    font-weight: bold;
     text-align: center;
-    margin:auto;
+    margin: auto;
   }
-  .footer-button{
-    width:80%;
-    margin:auto;
+
+  .footer-button {
+    width: 80%;
+    margin: auto;
     padding-bottom: 10px;
   }
 
-  .card-text-large {
-    font-size:18px;
-  }
+
 
   .welcome-img {
     margin: auto;

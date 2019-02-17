@@ -3,7 +3,6 @@
 @import '~@ionic/angular/css/normalize.css';
 @import '~@ionic/angular/css/structure.css';
 @import '~@ionic/angular/css/typography.css';
-
 @import '~@ionic/angular/css/padding.css';
 @import '~@ionic/angular/css/float-elements.css';
 @import '~@ionic/angular/css/text-alignment.css';
@@ -74,6 +73,10 @@
   font-size: 1.5rem;
 }
 
+.text18 {
+  font-size: 1.8rem;
+}
+
 .text20 {
   font-size: 2rem;
 }
@@ -102,6 +105,7 @@ ion-toolbar.user-profile {
     width: 68px;
     height: 68px;
   }
+
   .item-inner {
     border-width: 0;
   }
@@ -117,75 +121,75 @@ ion-toolbar {
 // Android card shadow
 ion-card {
   &.sc-ion-card-md-h {
-    box-shadow: 0 2px 4px rgba(var(--ion-color-dark-rgb),.24);
+    box-shadow: 0 2px 4px rgba(var(--ion-color-dark-rgb), .24);
   }
 }
 
-// style for auth pages
-.auth-page {
-  background-image: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
-
-  .grid {
-    padding: 0;
-    .col {
-      padding: 0;
-    }
-  }
-
-  .btn-group {
-    .button-ios,
-    .button-md {
-      border-radius: 0;
-      &:first-of-type {
-        border-radius: 2px 0 0 2px;
-      }
-      &:last-of-type {
-        border-radius: 0 2px 2px 0;
-      }
-    }
-  }
-
-  .auth-content {
-    margin: 0 5%;
-
-    .logo {
-      width: 60px;
-      height: 60px;
-      margin: 20px auto 8px;
-      border-radius: 10%;
-      background: url("/assets/img/ionic4start-ico.png") no-repeat;
-      background-size: 100%;
-    }
-
-    .list-form {
-      padding: 0;
-      margin-bottom: 0;
-
-      ion-item {
-        background: none;
-        padding: 0;
-
-        &:first-child {
-          border-top: none;
-        }
-
-        &:after {
-          display: none;
-        }
-
-        ion-label {
-          font-size: 1em;
-          color: var(--ion-color-light);
-        }
-
-        input {
-          color: var(--ion-color-light);
-        }
-      }
-    }
-  }
-
-}
+//// style for auth pages
+//.auth-page {
+//  background-image: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+//
+//  .grid {
+//    padding: 0;
+//    .col {
+//      padding: 0;
+//    }
+//  }
+//
+//  .btn-group {
+//    .button-ios,
+//    .button-md {
+//      border-radius: 0;
+//      &:first-of-type {
+//        border-radius: 2px 0 0 2px;
+//      }
+//      &:last-of-type {
+//        border-radius: 0 2px 2px 0;
+//      }
+//    }
+//  }
+//
+//  .auth-content {
+//    margin: 0 5%;
+//
+//    .logo {
+//      width: 60px;
+//      height: 60px;
+//      margin: 20px auto 8px;
+//      border-radius: 10%;
+//      background: url("/assets/img/ionic4start-ico.png") no-repeat;
+//      background-size: 100%;
+//    }
+//
+//    .list-form {
+//      padding: 0;
+//      margin-bottom: 0;
+//
+//      ion-item {
+//        background: none;
+//        padding: 0;
+//
+//        &:first-child {
+//          border-top: none;
+//        }
+//
+//        &:after {
+//          display: none;
+//        }
+//
+//        ion-label {
+//          font-size: 1em;
+//          color: var(--ion-color-light);
+//        }
+//
+//        input {
+//          color: var(--ion-color-light);
+//        }
+//      }
+//    }
+//  }
+//
+//}
 
 // Custom Menu styles (overriding Shadow DOM)
 ion-menu {
@@ -200,7 +204,22 @@ ion-menu {
 
 .mto {
   margin-top: 12px;
+
   ion-icon {
     margin-bottom: -2px;
+  }
 }
+
+.div-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
+
+.card-opacity {
+  opacity: .8;
+
+}
+

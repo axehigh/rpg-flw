@@ -20,19 +20,19 @@ export class WordsPage implements OnInit {
 
     async getDataOnce() {
         try {
-            const loading = await this.loadingController.create({
-                message: 'Loading'
-            });
+            // const loading = await this.loadingController.create({
+            //     message: 'Loading'
+            // });
 
-            await loading.present();
+            // await loading.present();
 
             this.api.getDataOnce()
                 .subscribe(res => {
                     this.words = res[0];
-                    loading.dismiss();
+                    // loading.dismiss();
                 }, err => {
                     console.log(err);
-                    loading.dismiss();
+                    // loading.dismiss();
                 });
         } catch (err) {
             console.log("Failed Word Page: " + JSON.stringify(err, ["message", "arguments", "type", "name"]))

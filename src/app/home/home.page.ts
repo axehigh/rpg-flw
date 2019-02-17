@@ -29,19 +29,19 @@ export class HomePage {
     async getDataOnce() {
         try {
 
-            const loading = await this.loadingController.create({
-                message: 'Loading'
-            });
+            // const loading = await this.loadingController.create({
+            //     message: 'Loading'
+            // });
 
-            await loading.present();
+            // await loading.present();
             this.api.getDataOnce()
                 .subscribe(res => {
                     this.words = res[0];
                     this.getRandom();
-                    loading.dismiss();
+                    // loading.dismiss();
                 }, err => {
                     console.log(err);
-                    loading.dismiss();
+                    // loading.dismiss();
                 });
         } catch (err) {
             console.log("Failed Home Page: " + JSON.stringify(err, ["message", "arguments", "type", "name"]))
