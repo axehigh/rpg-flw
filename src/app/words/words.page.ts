@@ -22,13 +22,13 @@ export class WordsPage implements OnInit {
 
         try {
             let loading: any;
-            if (!this.api.loaded) {
+            //if (!this.api.loaded) {
                 loading = await this.loadingController.create({
-                    message: 'Loading'
+                    message: 'Opening tome'
                 });
 
                 await loading.present();
-            }
+            //}
 
             this.api.getDataOnce()
                 .subscribe(res => {
