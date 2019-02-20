@@ -9,15 +9,15 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
     <ion-virtual-scroll [items]="words" approxItemHeight="100px">
             <ion-item *virtualItem="let word;">
                 <ion-label text-wrap>
-                    <ion-text color="dark">No# {{word['textid']}}</ion-text>
+                    <ion-text>No# {{word['textid']}}</ion-text>
                     <p>
-                        <ion-text color="primary" [innerHTML]="word['text']"></ion-text>
+                        <ion-text  [innerHTML]="word['text']"></ion-text>
                     </p>
                 </ion-label>
             </ion-item>
     </ion-virtual-scroll>
-</ion-content>
+</ion-content>]

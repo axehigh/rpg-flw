@@ -20,3 +20,7 @@ https://www.youtube.com/watch?v=Z2v5U5AMIfo&feature=youtu.be
 chrome://inspect/#devices
 
 # IOS
+
+
+# Tutorials
+Firestore : https://devdactic.com/ionic-4-firebase-angularfire/

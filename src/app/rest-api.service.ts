@@ -23,7 +23,7 @@ export class RestApiService {
 
     getDataOnce(): Observable<any> {
         try {
-            console.log('getDataOnce() ');
+            console.log('getDataFromREST() ');
             if (!this.wordList && !Array.isArray(this.wordList)) {
                 console.debug('REST API: ' + apiUrl);
                 const response1 = this.http.get(apiUrl);

@@ -34,6 +34,11 @@ export class AppComponent {
             icon: 'faBookDead'
         },
         {
+            title: 'Firebase',
+            url: '/firebase',
+            icon: 'faQuestionCircle'
+        },
+        {
             title: 'Let´s not forget',
             url: '/about',
             icon: 'faHeart'
