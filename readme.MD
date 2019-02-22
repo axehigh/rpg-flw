@@ -14,6 +14,11 @@ File -> Workspace Setting -> Legacy Build
 Font-Awesome
 https://www.youtube.com/watch?v=Z2v5U5AMIfo&feature=youtu.be
 
+Need to use "fortAwesome" and the following npm commands:
+npm i --save @fortawesome/angular-fontawesome
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+
 # Android
 
 ## Debug
