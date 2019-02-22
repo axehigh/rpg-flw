@@ -2,12 +2,20 @@ import {Injectable} from '@angular/core';
 import {Observable, of, throwError} from 'rxjs';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {map} from 'rxjs/operators';
+import {forkJoin} from 'rxjs';
 
+export interface FamousLastWordItem {
+    id?: string;
+    text: string;
+    words: string [];
+}
 
 export interface FamousLastWord {
     id?: string;
     text: string;
+    words: FamousLastWordItem [];
 }
+
 
 @Injectable({
     providedIn: 'root'
@@ -16,13 +24,14 @@ export class FirebaseService {
 
     private famousLastWordCollection: AngularFirestoreCollection<FamousLastWord>;
     private famousLastWords: Observable<FamousLastWord[]>;
+    famousLastWordsItems: Observable<any[]>;
     private db: AngularFirestore;
 
     constructor(db: AngularFirestore) {
-
+        console.info('Constructor of Firebase Service');
         this.db = db;
         // Firestore
-        this.famousLastWordCollection = db.collection<FamousLastWord>('rpg-flw');
+        this.famousLastWordCollection = db.collection<FamousLastWord>('rpg-flw-master');
 
         this.famousLastWords = this.famousLastWordCollection.snapshotChanges().pipe(
             map(actions => {
@@ -37,8 +46,23 @@ export class FirebaseService {
     }
 
     // Firestore
-    getWords() {
+    getWords(): Observable<any> {
         return this.famousLastWords;
+    }
+
+    getWordItems(): Observable<any> {
+        try {
+            console.log('FirebaseService.getWordItems()');
+            if (!this.famousLastWordsItems && !Array.isArray(this.famousLastWordsItems)) {
+                console.info('Firebase.service.getWords() success ');
+                const response = this.getWords();
+                this.famousLastWordsItems = forkJoin([response]);
+            }
+            console.info('famousLastWordsItems: ' + JSON.stringify(this.famousLastWordsItems));
+            return this.famousLastWordsItems;
+        } catch (e) {
+            console.log(JSON.stringify(e, ['message', 'arguments', 'type', 'name']));
+        }
     }
 
     getWord(id) {
@@ -69,7 +93,7 @@ export class FirebaseService {
 
         for (i = 0; i < list.length; i++) {
 
-            //--create a reference--
+            // --create a reference--
             var famousRef = this.db.collection('rpg-flw').doc(list[i].id).ref;
 
             batch.set(famousRef, {
@@ -80,18 +104,18 @@ export class FirebaseService {
             counter++;
             if (counter % 400 === 0) {
                 promises.push(batch.commit);
-                console.info("Commit " + counter)
+                console.info('Commit ' + counter);
 
             }
 
         }
 
         //--finally--
-        console.info("Commit " + counter)
+        console.info('Commit ' + counter);
         promises.push(batch.commit());
 
         Promise.all(promises).then(function (values) {
-            console.log("all Commits have been resolved");
+            console.log('all Commits have been resolved');
             return values;
         });
 

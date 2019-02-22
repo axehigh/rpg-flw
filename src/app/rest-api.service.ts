@@ -4,7 +4,7 @@ import {Observable, of, throwError} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import {forkJoin} from 'rxjs';
 
-// const apiUrl = 'http://axehigh.com/rpg/flw2/index.php/listdato:1:01-01-2010';
+//const apiUrl = 'http://axehigh.com/rpg/flw2/index.php/listdato:1:01-01-2010';
 const apiUrl = 'http://axehigh.com/rpg/flw2/index.php/listdato:0:01-01-2010';
 
 @Injectable({
@@ -30,9 +30,10 @@ export class RestApiService {
                 this.wordList = forkJoin([response1]);
                 this.loaded = true;
             }
+            console.info('WordList: ' + JSON.stringify(this.wordList));
             return this.wordList;
         } catch (e) {
-            console.log(JSON.stringify(e, ["message", "arguments", "type", "name"]));
+            console.log(JSON.stringify(e, ['message', 'arguments', 'type', 'name']));
         }
     }
 

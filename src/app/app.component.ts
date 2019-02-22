@@ -42,6 +42,11 @@ export class AppComponent {
             title: 'Let´s not forget',
             url: '/about',
             icon: 'faHeart'
+        },
+        {
+            title: 'Superadmin',
+            url: '/superadmin',
+            icon: 'faHeart'
         }
     ];
 

@@ -11,8 +11,11 @@ I was struggling with this today, it was super frustrating.
 File -> Workspace Setting -> Legacy Build
 
 # Added Libraries and helpful websites
-Font-Awesome
+## Font-Awesome
 https://www.youtube.com/watch?v=Z2v5U5AMIfo&feature=youtu.be
+
+## AngularFire
+npm install firebase @angular/fire --save
 
 # Android
 

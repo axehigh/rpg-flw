@@ -16,7 +16,8 @@ const routes: Routes = [
     {
         path: 'words', loadChildren: './words/words.module#WordsPageModule'
     },
-  { path: 'firebase', loadChildren: './firebase/firebase.module#FirebasePageModule' }
+  { path: 'firebase', loadChildren: './firebase/firebase.module#FirebasePageModule' },  { path: 'superadmin', loadChildren: './superadmin/superadmin.module#SuperadminPageModule' }
+
 ];
 
 @NgModule({
