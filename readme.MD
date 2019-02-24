@@ -24,6 +24,10 @@ chrome://inspect/#devices
 
 # IOS
 
+# Resources
+splash need to be 2732x2732
+icon needs to be 1024x1024
+
 
 # Tutorials
 Firestore : https://devdactic.com/ionic-4-firebase-angularfire/

@@ -24,8 +24,9 @@ export class FirebaseService {
 
     private famousLastWordCollection: AngularFirestoreCollection<FamousLastWord>;
     private famousLastWords: Observable<FamousLastWord[]>;
-    famousLastWordsItems: Observable<any[]>;
     private db: AngularFirestore;
+
+    famousLastWordsItems: Observable<any[]>;
 
     constructor(db: AngularFirestore) {
         console.info('Constructor of Firebase Service');
@@ -47,6 +48,7 @@ export class FirebaseService {
 
     // Firestore
     getWords(): Observable<any> {
+        console.info("getWords()");
         return this.famousLastWords;
     }
 
@@ -54,15 +56,17 @@ export class FirebaseService {
         try {
             console.log('FirebaseService.getWordItems()');
             if (!this.famousLastWordsItems && !Array.isArray(this.famousLastWordsItems)) {
-                console.info('Firebase.service.getWords() success ');
                 const response = this.getWords();
-                this.famousLastWordsItems = forkJoin([response]);
+                this.famousLastWordsItems = response;
+            } else {
+                console.log('Using Service variable');
             }
-            console.info('famousLastWordsItems: ' + JSON.stringify(this.famousLastWordsItems));
             return this.famousLastWordsItems;
+
         } catch (e) {
-            console.log(JSON.stringify(e, ['message', 'arguments', 'type', 'name']));
+            console.error("Errorr:" + JSON.stringify(e, ['message', 'arguments', 'type', 'name']));
         }
+
     }
 
     getWord(id) {
@@ -82,42 +86,49 @@ export class FirebaseService {
     }
 
     insertBatch(list: FamousLastWord[]) {
-        //--create batch--
-        var batch = this.db.firestore.batch();
+        try {
 
-        // let famousRef: []
-        var i;
-        var promises = [];
 
-        var counter = 0;
+            //--create batch--
+            var batch = this.db.firestore.batch();
 
-        for (i = 0; i < list.length; i++) {
+            // let famousRef: []
+            var i;
+            var promises = [];
 
-            // --create a reference--
-            var famousRef = this.db.collection('rpg-flw').doc(list[i].id).ref;
+            var counter = 0;
 
-            batch.set(famousRef, {
-                id: list[i].id,
-                text: list[i].text
-            });
+            for (i = 0; i < list.length; i++) {
 
-            counter++;
-            if (counter % 400 === 0) {
-                promises.push(batch.commit);
-                console.info('Commit ' + counter);
+                // --create a reference--
+                var famousRef = this.db.collection('rpg-flw').doc(list[i].id).ref;
+
+                batch.set(famousRef, {
+                    id: list[i].id,
+                    text: list[i].text
+                });
+
+                counter++;
+                if (counter % 400 === 0) {
+                    promises.push(batch.commit);
+                    console.info('Commit ' + counter);
+
+                }
 
             }
 
+            //--finally--
+            console.info('Commit ' + counter);
+            promises.push(batch.commit());
+
+            Promise.all(promises).then(function (values) {
+                console.log('all Commits have been resolved');
+                return values;
+            });
+         }catch( err){
+            console.error(JSON.stringify(err, ['message', 'arguments', 'type', 'name']));
         }
 
-        //--finally--
-        console.info('Commit ' + counter);
-        promises.push(batch.commit());
-
-        Promise.all(promises).then(function (values) {
-            console.log('all Commits have been resolved');
-            return values;
-        });
 
     }
 }
