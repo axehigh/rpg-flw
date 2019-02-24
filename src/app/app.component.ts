@@ -28,26 +28,27 @@ export class AppComponent {
             url: '/home',
             icon: 'faDungeon'
         },
+        // {
+        //     title: 'Tome of last words',
+        //     url: '/words',
+        //     icon: 'faBookDead'
+        // },
         {
             title: 'Tome of last words',
-            url: '/words',
-            icon: 'faBookDead'
-        },
-        {
-            title: 'Firebase',
             url: '/firebase',
-            icon: 'faQuestionCircle'
+            icon: 'faBookDead'
         },
         {
             title: 'Let´s not forget',
             url: '/about',
             icon: 'faHeart'
-        },
-        {
-            title: 'Superadmin',
-            url: '/superadmin',
-            icon: 'faHeart'
         }
+        // ,
+        // {
+        //     title: 'Superadmin',
+        //     url: '/superadmin',
+        //     icon: 'faHeart'
+        // }
     ];
 
     constructor(

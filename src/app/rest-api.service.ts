@@ -8,7 +8,7 @@ import {forkJoin} from 'rxjs';
 const listAll = 0;
 const listSome = 1;
 
-const listIndex = listAll;
+const listIndex = listSome;
 const apiUrl = 'http://axehigh.com/rpg/flw2/index.php/listdato:'+listIndex+':01-01-2010';
 
 @Injectable({

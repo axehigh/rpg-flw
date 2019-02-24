@@ -48,7 +48,7 @@ export class FirebaseService {
 
     // Firestore
     getWords(): Observable<any> {
-        console.info("getWords()");
+        console.info("getWords from DB()");
         return this.famousLastWords;
     }
 
@@ -64,7 +64,7 @@ export class FirebaseService {
             return this.famousLastWordsItems;
 
         } catch (e) {
-            console.error("Errorr:" + JSON.stringify(e, ['message', 'arguments', 'type', 'name']));
+            console.error("Error:" + JSON.stringify(e, ['message', 'arguments', 'type', 'name']));
         }
 
     }

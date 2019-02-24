@@ -4,7 +4,7 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>
-            FireBase
+            Tome of death
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -13,14 +13,14 @@
 
     <ion-list>
 
-        <!--<ng-container *ngIf="famousLastWords && famousLastWords[0] && famousLastWords[0].length == 0">-->
-            <!--<div *ngFor="let n of [0,1,2]" padding>-->
-                <!--<ion-skeleton-text></ion-skeleton-text>-->
-                <!--<p>-->
-                    <!--<ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>-->
-                <!--</p>-->
-            <!--</div>-->
-        <!--</ng-container>-->
+        <ng-container *ngIf="!words || (words && words[0] && words[0].length == 0) ">
+            <div *ngFor="let n of [0,1,2]" padding>
+                <ion-skeleton-text></ion-skeleton-text>
+                <p>
+                    <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+                </p>
+            </div>
+        </ng-container>
 
 
         <ion-virtual-scroll *ngIf="words && words && words.length > 0"
