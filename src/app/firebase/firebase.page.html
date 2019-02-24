@@ -9,9 +9,8 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
 
-    <ion-list>
 
         <ng-container *ngIf="!words || (words && words[0] && words[0].length == 0) ">
             <div *ngFor="let n of [0,1,2]" padding>
@@ -22,26 +21,18 @@
             </div>
         </ng-container>
 
-
         <ion-virtual-scroll *ngIf="words && words && words.length > 0"
                             [items]="words" approxItemHeight="100px">
-            <ion-item-sliding *virtualItem="let word;">
+            <ion-item *virtualItem="let word;">
                 <ion-label text-wrap>
                     <ion-text>No# {{word['textid']}}</ion-text>
                     <p>
-                        <ion-text [innerHTML]="word['text']"></ion-text>
+                        <ion-text  [innerHTML]="word['text']"></ion-text>
                     </p>
                 </ion-label>
-                <ion-item-options side="end">
-                    <ion-item-option (click)="remove(item)" color="secondary">
-                        Check
-                        <ion-icon name="checkmark" slot="end"></ion-icon>
-                    </ion-item-option>
-                </ion-item-options>
-            </ion-item-sliding>
+            </ion-item>
         </ion-virtual-scroll>
 
-    </ion-list>
 
 
 </ion-content>

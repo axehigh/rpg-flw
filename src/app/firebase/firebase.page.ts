@@ -27,7 +27,7 @@ export class FirebasePage implements OnInit {
     async getFirebaseContent() {
         let loading: any;
         try {
-            loading = await this.loadingController.create({message: 'Opening tome 2'});
+            loading = await this.loadingController.create({message: 'Opening tome'});
             await loading.present();
 
             this.subscription = this.fireBaseService.getWordItems()
