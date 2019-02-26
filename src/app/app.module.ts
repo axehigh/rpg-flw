@@ -11,11 +11,17 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {HttpClientModule} from '@angular/common/http';
 
+// Font Awesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBookDead,faChessRook,faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBookDead,faChessRook,faQuestionCircle ,faScroll} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faBookDead, faChessRook)
+//Firestore
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+library.add(faBookDead, faChessRook, faQuestionCircle, faScroll);
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -23,8 +29,13 @@ library.add(faBookDead, faChessRook)
         BrowserModule,
         IonicModule.forRoot(),
         AppRoutingModule,
+        // Http Requests
         HttpClientModule,
-        FontAwesomeModule
+        // Font Awesome
+        FontAwesomeModule,
+        //FireStore
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
     ],
     providers: [
         StatusBar,

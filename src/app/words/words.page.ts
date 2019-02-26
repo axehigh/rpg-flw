@@ -15,7 +15,7 @@ export class WordsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.getDataOnce();
+        //this.getDataOnce();
     }
 
     async getDataOnce() {

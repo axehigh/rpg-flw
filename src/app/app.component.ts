@@ -4,7 +4,7 @@ import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 
-import {faBookDead, faChessRook, faQuestionCircle, faDungeon, faHeart} from '@fortawesome/free-solid-svg-icons';
+import {faBookDead, faChessRook, faQuestionCircle, faDungeon, faHeart,faScroll} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class AppComponent {
     faQuestionCircle = faQuestionCircle;
     faDungeon = faDungeon;
     faHeart = faHeart;
+    faScroll = faScroll;
 
     public appPages = [
         {
@@ -28,16 +29,32 @@ export class AppComponent {
             url: '/home',
             icon: 'faDungeon'
         },
+        // {
+        //     title: 'Tome of last words',
+        //     url: '/words',
+        //     icon: 'faBookDead'
+        // },
         {
             title: 'Tome of last words',
-            url: '/words',
+            url: '/firebase',
             icon: 'faBookDead'
+        },
+        {
+            title: 'Submit a final word',
+            url: '/submit',
+            icon: 'faScroll'
         },
         {
             title: 'Let´s not forget',
             url: '/about',
             icon: 'faHeart'
         }
+        // ,
+        // {
+        //     title: 'Superadmin',
+        //     url: '/superadmin',
+        //     icon: 'faHeart'
+        // }
     ];
 
     constructor(

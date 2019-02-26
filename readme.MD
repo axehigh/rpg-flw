@@ -11,13 +11,11 @@ I was struggling with this today, it was super frustrating.
 File -> Workspace Setting -> Legacy Build
 
 # Added Libraries and helpful websites
-Font-Awesome
+## Font-Awesome
 https://www.youtube.com/watch?v=Z2v5U5AMIfo&feature=youtu.be
 
-Need to use "fortAwesome" and the following npm commands:
-npm i --save @fortawesome/angular-fontawesome
-npm i --save @fortawesome/fontawesome-svg-core
-npm i --save @fortawesome/free-solid-svg-icons
+## AngularFire
+npm install firebase @angular/fire --save
 
 # Android
 
@@ -25,3 +23,11 @@ npm i --save @fortawesome/free-solid-svg-icons
 chrome://inspect/#devices
 
 # IOS
+
+# Resources
+splash need to be 2732x2732
+icon needs to be 1024x1024
+
+
+# Tutorials
+Firestore : https://devdactic.com/ionic-4-firebase-angularfire/

@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Tome of death
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+
+        <ng-container *ngIf="!words || (words && words[0] && words[0].length == 0) ">
+            <div *ngFor="let n of [0,1,2]" padding>
+                <ion-skeleton-text></ion-skeleton-text>
+                <p>
+                    <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+                </p>
+            </div>
+        </ng-container>
+
+        <ion-virtual-scroll *ngIf="words && words && words.length > 0"
+                            [items]="words" approxItemHeight="100px">
+            <ion-item *virtualItem="let word;">
+                <ion-label text-wrap>
+                    <ion-text>No# {{word['textid']}}</ion-text>
+                    <p>
+                        <ion-text  [innerHTML]="word['text']"></ion-text>
+                    </p>
+                </ion-label>
+            </ion-item>
+        </ion-virtual-scroll>
+
+
+
+</ion-content>
