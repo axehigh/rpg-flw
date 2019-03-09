@@ -12,7 +12,16 @@
 <ion-content >
 
 
-        <ng-container *ngIf="!words || (words && words[0] && words[0].length == 0) ">
+    <ion-list>
+        <ion-item>
+            <ion-button (click)="master()">Master</ion-button>
+        </ion-item>
+        <ion-item>
+            <ion-button (click)="submitted()">Recent</ion-button>
+        </ion-item>
+    </ion-list>
+
+        <ng-container *ngIf="!currentWords">
             <div *ngFor="let n of [0,1,2]" padding>
                 <ion-skeleton-text></ion-skeleton-text>
                 <p>
@@ -21,8 +30,9 @@
             </div>
         </ng-container>
 
-        <ion-virtual-scroll *ngIf="words && words && words.length > 0"
-                            [items]="words" approxItemHeight="100px">
+
+        <ion-virtual-scroll *ngIf="currentWords && currentWords.length > 0"
+                            [items]="currentWords" approxItemHeight="100px">
             <ion-item *virtualItem="let word;">
                 <ion-label text-wrap>
                     <ion-text>No# {{word['textid']}}</ion-text>
@@ -32,6 +42,7 @@
                 </ion-label>
             </ion-item>
         </ion-virtual-scroll>
+
 
 
 

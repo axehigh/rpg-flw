@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {FirebaseService} from '../firebase.service';
+import {FamousLastWord, FirebaseService} from '../firebase.service';
 import {LoadingController} from '@ionic/angular';
 
 @Component({
@@ -10,33 +10,44 @@ import {LoadingController} from '@ionic/angular';
 })
 export class FirebasePage implements OnInit {
 
-    words: any;
     private subscription;
+    readonly DOCUMENT_MASTER_ID = "MASTER";
+    readonly DOCUMENT_ACCEPTED_ID = "ACCEPTED";
+    currentDocument: FamousLastWord;
+    currentWords: any;
 
-    constructor(private fireBaseService: FirebaseService, public loadingController: LoadingController) {
+    constructor(private firebaseService: FirebaseService, public loadingController: LoadingController) {
     }
 
     ngOnInit() {
-        this.getFirebaseContent();
+        this.getDocumentAndWords(this.DOCUMENT_MASTER_ID);
     }
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
 
-    async getFirebaseContent() {
+     master(){
+        this.getDocumentAndWords(this.DOCUMENT_MASTER_ID);
+    }
+
+     submitted(){
+        this.getDocumentAndWords(this.DOCUMENT_ACCEPTED_ID);
+    }
+
+    async getDocumentAndWords(currentDocument) {
         let loading: any;
         try {
             loading = await this.loadingController.create({message: 'Opening tome'});
             await loading.present();
 
-            this.subscription = this.fireBaseService.getWordItems()
-                .subscribe(res => {
-                    this.words = res[0].words;
-                    if (loading) {
-                        loading.dismiss();
-                    }
-                });
+            this.subscription = this.firebaseService.getDocument(currentDocument).subscribe(res => {
+                if (res) {
+                    this.currentDocument = res;
+                    this.currentWords = this.currentDocument.words;
+                }
+                loading.dismiss();
+            });
         } catch (err) {
             if (loading) {
                 loading.dismiss();

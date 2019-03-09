@@ -1,0 +1,18 @@
+:host {
+  ion-content, ion-footer {
+    --background: url('../../assets/background_bw_low.jpg') no-repeat 100% 100%;
+  }
+
+  ion-footer {
+    --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
+  }
+
+  ion-item, ion-text {
+    --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
+  }
+
+  .fake-skeleton {
+    width: 60%;
+  }
+}
+

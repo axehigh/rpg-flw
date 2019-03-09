@@ -13,15 +13,69 @@ import {LoadingController} from '@ionic/angular';
 })
 export class SuperadminPage implements OnInit {
 
-    words: any;
-    famousLastWords : any;
+    readonly DOCUMENT_MASTER_ID = "MASTER";
 
-    constructor(public api: RestApiService, private fireBaseService: FirebaseService, public loadingController: LoadingController) {
+    documentMaster: FamousLastWord = {
+        id: '99999',
+        text: 'List of dying words',
+        words: []
+    };
+
+    words: any;
+    famousLastWords: any;
+
+    private subscription;
+
+    constructor(public api: RestApiService, private firebaseService: FirebaseService, public loadingController: LoadingController) {
     }
 
     ngOnInit() {
         // this.getDataFromREST();
-        //this.getFirebaseContent();
+        this.getFirebaseContent();
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
+
+    async duplicateMaster() {
+        try {
+            if (this.words && this.documentMaster) {
+                console.info("Prepare to write document");
+                this.firebaseService.addDocument(this.documentMaster, this.DOCUMENT_MASTER_ID).then(function () {
+                    console.info('Completed Adding Master');
+                });
+            }else{
+                console.info("No words yet");
+            }
+
+        } catch (err) {
+
+            console.log('Failed FirebasePage: ' + JSON.stringify(err, ['message', 'arguments', 'type', 'name']));
+        }
+    }
+
+
+    async getFirebaseContent() {
+        let loading: any;
+        try {
+            loading = await this.loadingController.create({message: 'Loading all items'});
+            await loading.present();
+
+            this.subscription = this.firebaseService.getWordItems()
+                .subscribe(res => {
+                    this.documentMaster = res[1];
+                    this.words = res[1].words;
+                    if (loading) {
+                        loading.dismiss();
+                    }
+                });
+        } catch (err) {
+            if (loading) {
+                loading.dismiss();
+            }
+            console.log('Failed FirebasePage: ' + JSON.stringify(err, ['message', 'arguments', 'type', 'name']));
+        }
     }
 
     // async getFirebaseContent() {
@@ -67,7 +121,7 @@ export class SuperadminPage implements OnInit {
     //     }
     // }
     //
-    // createDocument() {
+    // updateSubmittedDocument() {
     //
     //     let word: FamousLastWord = {
     //         id: 'V1.0',

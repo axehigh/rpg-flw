@@ -49,12 +49,12 @@ export class AppComponent {
             url: '/about',
             icon: 'faHeart'
         }
-        // ,
-        // {
-        //     title: 'Superadmin',
-        //     url: '/superadmin',
-        //     icon: 'faHeart'
-        // }
+        ,
+        {
+            title: 'Superadmin',
+            url: '/superadmin',
+            icon: 'faHeart'
+        }
     ];
 
     constructor(

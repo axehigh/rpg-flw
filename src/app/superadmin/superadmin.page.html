@@ -1,23 +1,34 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Superadmin
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Superadmin
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <div>
-    <ion-button (click)="batchCreate()">Create All</ion-button>
-    <ion-button (click)="batchDelete()">Delete All</ion-button>
-    <ion-button (click)="batchInsert()">Batch Insert All</ion-button>
-    <ion-button (click)="createDocument()">Create Document</ion-button>
-  </div>
+    <ion-list>
+        <ion-item>
+            <ion-button (click)="batchCreate()">Create All</ion-button>
+        </ion-item>
+        <ion-item>
+            <ion-button (click)="batchDelete()">Delete All</ion-button>
+        </ion-item>
 
+        <ion-item>
+            <ion-button (click)="batchInsert()">Batch Insert All</ion-button>
+        </ion-item>
+        <ion-item>
+            <ion-button (click)="createDocument()">Create Document</ion-button>
+        </ion-item>
+        <ion-item>
+            <ion-button (click)="duplicateMaster()">Duplicate Master</ion-button>
+        </ion-item>
+    </ion-list>
 
 
 </ion-content>

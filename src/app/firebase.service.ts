@@ -23,10 +23,10 @@ export interface FamousLastWord {
 export class FirebaseService {
 
     private famousLastWordCollection: AngularFirestoreCollection<FamousLastWord>;
-    private famousLastWords: Observable<FamousLastWord[]>;
+    private famousLastWordsSnapshot: Observable<FamousLastWord[]>;
     private db: AngularFirestore;
 
-    famousLastWordsItems: Observable<any[]>;
+    flwSnapshotCollection: Observable<any[]>;
 
     constructor(db: AngularFirestore) {
         console.info('Constructor of Firebase Service');
@@ -34,7 +34,7 @@ export class FirebaseService {
         // Firestore
         this.famousLastWordCollection = db.collection<FamousLastWord>('rpg-flw-master');
 
-        this.famousLastWords = this.famousLastWordCollection.snapshotChanges().pipe(
+        this.famousLastWordsSnapshot = this.famousLastWordCollection.snapshotChanges().pipe(
             map(actions => {
                 return actions.map(a => {
                     const data = a.payload.doc.data();
@@ -49,19 +49,19 @@ export class FirebaseService {
     // Firestore
     getWords(): Observable<any> {
         console.info("getWords from DB()");
-        return this.famousLastWords;
+        return this.famousLastWordsSnapshot;
     }
 
     getWordItems(): Observable<any> {
         try {
             console.log('FirebaseService.getWordItems()');
-            if (!this.famousLastWordsItems && !Array.isArray(this.famousLastWordsItems)) {
+            if (!this.flwSnapshotCollection && !Array.isArray(this.flwSnapshotCollection)) {
                 const response = this.getWords();
-                this.famousLastWordsItems = response;
+                this.flwSnapshotCollection = response;
             } else {
                 console.log('Using Service variable');
             }
-            return this.famousLastWordsItems;
+            return this.flwSnapshotCollection;
 
         } catch (e) {
             console.error("Error:" + JSON.stringify(e, ['message', 'arguments', 'type', 'name']));
@@ -73,12 +73,20 @@ export class FirebaseService {
         return this.famousLastWordCollection.doc<FamousLastWord>(id).valueChanges();
     }
 
+    getDocument(id) {
+        return this.famousLastWordCollection.doc<FamousLastWord>(id).valueChanges();
+    }
+
     updateWord(flw: FamousLastWord, id: string) {
         return this.famousLastWordCollection.doc(id).update(flw);
     }
 
     addWord(flw: FamousLastWord) {
         return this.famousLastWordCollection.add(flw);
+    }
+
+    addDocument(flw: FamousLastWord,title) {
+        return this.famousLastWordCollection.doc(title).set(flw);
     }
 
     removeWord(id) {
