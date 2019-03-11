@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FamousLastWord, FamousLastWordItem, FirebaseService} from '../firebase.service';
+import {FamousLastWord, FamousLastWordItem, FirebaseService, MyCounter} from '../firebase.service';
 
 import {faTrashAlt, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
-
+import {LoadingController} from "@ionic/angular";
+import {ToastController} from '@ionic/angular';
 
 @Component({
     selector: 'app-submit',
@@ -39,7 +40,12 @@ export class SubmitPage implements OnInit {
         words: []
     };
 
-    constructor(private firebaseService: FirebaseService) {
+    counterDocument: MyCounter;
+
+
+    constructor(private firebaseService: FirebaseService,
+                public loadingController: LoadingController,
+                public toastController: ToastController) {
     }
 
     ngOnInit() {
@@ -73,20 +79,6 @@ export class SubmitPage implements OnInit {
         });
     }
 
-        async removeSubmittedItem2(selectedItem) {
-        console.info("Deleted Item:  " + JSON.stringify(selectedItem));
-        console.info("BEFORE"+JSON.stringify(this.words))
-        let index = this.submittedDocument.words.findIndex(x => x.id == selectedItem.id);
-        console.info("Found item at index of" + index);
-
-        //delete this.words[index];
-        this.submittedDocument.words.splice(index, 1);
-        console.info("After"+JSON.stringify(this.words))
-        this.firebaseService.updateWord(this.submittedDocument, this.SUBMITTED_DOCUMENT).then(() => {
-            console.info("Updated Submitted Document");
-
-        });
-    }
     async removeSubmittedItem(selectedItem) {
         this.removeItemFromDocument(selectedItem, this.submittedDocument, this.SUBMITTED_DOCUMENT);
     }
@@ -95,22 +87,45 @@ export class SubmitPage implements OnInit {
         this.removeItemFromDocument(selectedItem, this.acceptedDocument, this.ACCEPTED_DOCUMENT);
     }
 
-    async removeItemFromDocument(selectedItem, document,documentId) {
+    async removeItemFromDocument(selectedItem, document, documentId) {
         let index = document.words.findIndex(x => x.id == selectedItem.id);
         document.words.splice(index, 1);
         this.firebaseService.updateWord(document, documentId).then(() => {
-            console.info("Updated "+documentId+ " document");
+            console.info("Updated " + documentId + " document");
         });
     }
 
     async updateSubmittedDocument() {
-
+        let loading: any;
         if (this.submittedDocument) {
-            console.info("Run check if the word exists from before");
-            this.submittedDocument.words.push(this.wordItem);
-            this.firebaseService.updateWord(this.submittedDocument, this.SUBMITTED_DOCUMENT).then(() => {
-                console.info("Added the word");
-            });
+            try {
+                // loading = await this.loadingController.create({message: 'Sending ...'});
+                // await loading.present();
+                console.info("Run check if the word exists from before");
+                // get counter
+
+                const result = this.counterFromSubmit().then(() => {
+                    this.presentToast("Sending for approval");
+                    if (this.counterDocument) {
+                        console.info("Counter" + this.counterDocument.counter);
+                        this.wordItem.id = "" + this.counterDocument.counter;
+
+                        this.submittedDocument.words.push(this.wordItem);
+                        const result2 = this.firebaseService.updateWord(this.submittedDocument, this.SUBMITTED_DOCUMENT).then(() => {
+                            console.info("Added the word");
+                            this.wordItem.text ='';
+                            this.wordItem.id = "0";
+
+                            // loading.dismiss();
+                        });
+                    }
+                });
+            } catch (err) {
+                if (loading) {
+                    loading.dismiss();
+                }
+                console.log('Failed FirebasePage: ' + JSON.stringify(err, ['message', 'arguments', 'type', 'name']));
+            }
         } else {
             // Should only be done once, or when all Submitted are gone.
             this.documentMaster.words.push(this.wordItem);
@@ -120,6 +135,14 @@ export class SubmitPage implements OnInit {
         }
 
 
+    }
+
+    async presentToast(txt:string) {
+        const toast = await this.toastController.create({
+            message: txt,
+            duration: 2000
+        });
+        toast.present();
     }
 
     async acceptSubmitted(acceptedWord: FamousLastWordItem) {
@@ -141,4 +164,17 @@ export class SubmitPage implements OnInit {
 
 
     }
+
+    async counterFromSubmit() {
+        const result = this.firebaseService.globalCounter().then(() => {
+            this.counterDocument = this.firebaseService.counterDocument;
+            const result2 = this.firebaseService.updateGlobalCounter();
+        });
+    }
+
+    // async updateGlobalCounterFromSubmit() {
+    //     this.firebaseService.updateGlobalCounter().then(() => {
+    //         this.counterDocument = this.firebaseService.counterDocument;
+    //     })
+    // }
 }

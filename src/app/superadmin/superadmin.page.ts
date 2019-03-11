@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {FamousLastWord, FirebaseService} from '../firebase.service';
+import {FamousLastWord, FirebaseService, MyCounter} from '../firebase.service';
 
 import {RestApiService} from '../rest-api.service';
 import {LoadingController} from '@ionic/angular';
@@ -20,6 +20,7 @@ export class SuperadminPage implements OnInit {
         text: 'List of dying words',
         words: []
     };
+
 
     words: any;
     famousLastWords: any;
@@ -45,7 +46,7 @@ export class SuperadminPage implements OnInit {
                 this.firebaseService.addDocument(this.documentMaster, this.DOCUMENT_MASTER_ID).then(function () {
                     console.info('Completed Adding Master');
                 });
-            }else{
+            } else {
                 console.info("No words yet");
             }
 
@@ -54,6 +55,8 @@ export class SuperadminPage implements OnInit {
             console.log('Failed FirebasePage: ' + JSON.stringify(err, ['message', 'arguments', 'type', 'name']));
         }
     }
+
+
 
 
     async getFirebaseContent() {

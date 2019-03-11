@@ -28,7 +28,15 @@
         <ion-item>
             <ion-button (click)="duplicateMaster()">Duplicate Master</ion-button>
         </ion-item>
+        <ion-item>
+            <ion-button (click)="counterFromSubmit()">Counter</ion-button>
+        </ion-item>
+
+        <ion-item>
+            <ion-button (click)="updateGlobalCounterFromSubmit()">Test Submit</ion-button>
+        </ion-item>
     </ion-list>
 
+    <ion-text *ngIf="counterDocument">{{counterDocument.counter}}</ion-text>
 
 </ion-content>

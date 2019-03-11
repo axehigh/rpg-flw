@@ -16,6 +16,9 @@ export interface FamousLastWord {
     words: FamousLastWordItem [];
 }
 
+export interface MyCounter {
+    counter: number;
+}
 
 @Injectable({
     providedIn: 'root'
@@ -25,8 +28,13 @@ export class FirebaseService {
     private famousLastWordCollection: AngularFirestoreCollection<FamousLastWord>;
     private famousLastWordsSnapshot: Observable<FamousLastWord[]>;
     private db: AngularFirestore;
-
     flwSnapshotCollection: Observable<any[]>;
+
+    // Global Counter
+    readonly DOCUMENT_GLOBAL_COUNTER = "global_counter";
+    counterDocument: MyCounter;
+    private counter: number;
+    currentCounter: number;
 
     constructor(db: AngularFirestore) {
         console.info('Constructor of Firebase Service');
@@ -77,15 +85,23 @@ export class FirebaseService {
         return this.famousLastWordCollection.doc<FamousLastWord>(id).valueChanges();
     }
 
+    getCounterDocument(id) {
+        return this.famousLastWordCollection.doc<any>(id).valueChanges();
+    }
+
     updateWord(flw: FamousLastWord, id: string) {
         return this.famousLastWordCollection.doc(id).update(flw);
+    }
+
+    updateDocument(value, documentId: string): Promise<any> {
+        return this.famousLastWordCollection.doc(documentId).update(value);
     }
 
     addWord(flw: FamousLastWord) {
         return this.famousLastWordCollection.add(flw);
     }
 
-    addDocument(flw: FamousLastWord,title) {
+    addDocument(flw: FamousLastWord, title) {
         return this.famousLastWordCollection.doc(title).set(flw);
     }
 
@@ -133,10 +149,32 @@ export class FirebaseService {
                 console.log('all Commits have been resolved');
                 return values;
             });
-         }catch( err){
+        } catch (err) {
             console.error(JSON.stringify(err, ['message', 'arguments', 'type', 'name']));
         }
+    }
 
+    async globalCounter() {
+        this.getCounterDocument(this.DOCUMENT_GLOBAL_COUNTER).subscribe(res => {
+            if (res) {
+                return this.counterDocument = res;
+                console.info("Counterdocument:" + JSON.stringify(this.counterDocument));
+            }
+        });
+    }
 
+    async updateGlobalCounter() {
+
+        if (this.counterDocument) {
+            let counterVar = this.counterDocument.counter + 1;
+
+            let myCounter: MyCounter = {
+                counter: counterVar
+            };
+            console.info("result:" + JSON.stringify(myCounter));
+            const result = await this.updateDocument(myCounter, this.DOCUMENT_GLOBAL_COUNTER).then(function () {
+                return counterVar;
+            })
+        }
     }
 }
