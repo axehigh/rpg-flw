@@ -4,6 +4,7 @@
 If info.plist not found
 
 ionic cordova emulate ios --buildFlag="-UseModernBuildSystem=0"
+ionic cordova run ios --buildFlag="-UseModernBuildSystem=0"
 
 Xcode 10: A valid provisioning profile for this executable was not found
 

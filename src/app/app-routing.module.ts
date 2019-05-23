@@ -3,8 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 const routes: Routes = [
     {
-        path: '',
-        redirectTo: 'home',
+        path: '', redirectTo: 'home',
         pathMatch: 'full'
     },
     {
@@ -16,8 +15,17 @@ const routes: Routes = [
     {
         path: 'words', loadChildren: './words/words.module#WordsPageModule'
     },
-  { path: 'firebase', loadChildren: './firebase/firebase.module#FirebasePageModule' },  { path: 'superadmin', loadChildren: './superadmin/superadmin.module#SuperadminPageModule' },
-  { path: 'submit', loadChildren: './submit/submit.module#SubmitPageModule' }
+    {
+        path: 'words', loadChildren: './words/words.module#WordsPageModule'
+    },
+    {path: 'firebase', loadChildren: './firebase/firebase.module#FirebasePageModule'},
+    {path: 'superadmin', loadChildren: './superadmin/superadmin.module#SuperadminPageModule'},
+    {path: 'submit', loadChildren: './submit/submit.module#SubmitPageModule'},
+    { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+    //{path: '', loadChildren: './login/login.module#LoginPageModule'},
+    {path: 'register', loadChildren: './register/register.module#RegisterPageModule'},
+    {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule'}
+
 
 ];
 

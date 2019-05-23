@@ -2,8 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FamousLastWord, FamousLastWordItem, FirebaseService, MyCounter} from '../firebase.service';
 
 import {faTrashAlt, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
-import {LoadingController} from "@ionic/angular";
-import {ToastController} from '@ionic/angular';
+import {LoadingController, NavController, ToastController} from "@ionic/angular";
+
+import {AuthenticateService} from '../services/authentication.service';
+
 
 @Component({
     selector: 'app-submit',
@@ -42,16 +44,20 @@ export class SubmitPage implements OnInit {
 
     counterDocument: MyCounter;
 
+    isAdmin: boolean = false;
 
     constructor(private firebaseService: FirebaseService,
                 public loadingController: LoadingController,
-                public toastController: ToastController) {
+                public toastController: ToastController,
+                private authService: AuthenticateService,
+                private navCtrl: NavController) {
     }
 
     ngOnInit() {
         this.loadSubmittedDocument();
         this.loadAcceptedDocument();
-
+        this.isAdmin = this.authService.isUserAdmin();
+        console.info("isadmin:" + this.isAdmin);
     }
 
     ngOnDestroy() {
@@ -113,7 +119,7 @@ export class SubmitPage implements OnInit {
                         this.submittedDocument.words.push(this.wordItem);
                         const result2 = this.firebaseService.updateWord(this.submittedDocument, this.SUBMITTED_DOCUMENT).then(() => {
                             console.info("Added the word");
-                            this.wordItem.text ='';
+                            this.wordItem.text = '';
                             this.wordItem.id = "0";
 
                             // loading.dismiss();
@@ -137,7 +143,7 @@ export class SubmitPage implements OnInit {
 
     }
 
-    async presentToast(txt:string) {
+    async presentToast(txt: string) {
         const toast = await this.toastController.create({
             message: txt,
             duration: 2000
@@ -177,4 +183,10 @@ export class SubmitPage implements OnInit {
     //         this.counterDocument = this.firebaseService.counterDocument;
     //     })
     // }
+
+
+    superAdmin() {
+        console.info("Superadmin");
+        this.navCtrl.navigateForward('superAdmin');
+    }
 }

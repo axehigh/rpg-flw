@@ -3,6 +3,7 @@ import {LoadingController} from '@ionic/angular';
 // import {RestApiService} from '../rest-api.service';
 import {FirebaseService} from '../firebase.service';
 import {faBookDead, faChessRook} from '@fortawesome/free-solid-svg-icons';
+import {AuthenticateService} from '../services/authentication.service';
 
 
 @Component({
@@ -17,7 +18,10 @@ export class HomePage {
     public word: 'Lets not forget, remember the PC Deaths.';
 
     // constructor(public api: RestApiService, public loadingController: LoadingController) {
-    constructor(public loadingController: LoadingController,private fireBaseService: FirebaseService) {
+    constructor(
+        public loadingController: LoadingController,
+        private fireBaseService: FirebaseService,
+        private authService: AuthenticateService) {
     }
 
     //icons
@@ -26,6 +30,12 @@ export class HomePage {
 
     ngOnInit() {
         this.getFirebaseContent();
+
+        if (this.authService.isUserAdmin()) {
+            console.info("Is Admin");
+        } else {
+            console.info("Is normal");
+        }
     }
 
     ngOnDestroy() {

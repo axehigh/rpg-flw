@@ -16,7 +16,6 @@ import { Device } from '@ionic-native/device/ngx';
 import { IsDebug } from '@ionic-native/is-debug/ngx';
 
 
-
 // Font Awesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -25,9 +24,20 @@ import { faBookDead,faChessRook,faQuestionCircle ,faScroll} from '@fortawesome/f
 //Firestore
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+
+
+// Firestore Authentication
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AuthenticateService } from './services/authentication.service';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import * as firebase from 'firebase';
+
 
 library.add(faBookDead, faChessRook, faQuestionCircle, faScroll);
+
+firebase.initializeApp(environment.firebase);
+
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -43,13 +53,16 @@ library.add(faBookDead, faChessRook, faQuestionCircle, faScroll);
         //FireStore
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
+        //Firestore Authentication
+        AngularFireAuthModule
     ],
     providers: [
         StatusBar,
         Device,
         IsDebug,
         SplashScreen,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+        AuthenticateService
     ],
     bootstrap: [AppComponent]
 })

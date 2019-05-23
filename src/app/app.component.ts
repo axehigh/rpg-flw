@@ -1,11 +1,19 @@
 import {Component} from '@angular/core';
 
-import {Platform} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 
-import {faBookDead, faChessRook, faQuestionCircle, faDungeon, faHeart,faScroll} from '@fortawesome/free-solid-svg-icons';
+import {
+    faBookDead,
+    faChessRook,
+    faQuestionCircle,
+    faDungeon,
+    faHeart,
+    faScroll
+} from '@fortawesome/free-solid-svg-icons';
 
+import {AuthenticateService} from './services/authentication.service';
 
 @Component({
     selector: 'app-root',
@@ -27,40 +35,41 @@ export class AppComponent {
         {
             title: 'Famous last word',
             url: '/home',
-            icon: 'faDungeon'
+            icon: 'faDungeon',
+            access: 'all'
         },
-        // {
-        //     title: 'Tome of last words',
-        //     url: '/words',
-        //     icon: 'faBookDead'
-        // },
         {
             title: 'Tome of last words',
             url: '/firebase',
-            icon: 'faBookDead'
+            icon: 'faBookDead',
+            access: 'all'
         },
         {
             title: 'Submit a final word',
             url: '/submit',
-            icon: 'faScroll'
+            icon: 'faScroll',
+            access: 'all'
         },
         {
             title: 'Let´s not forget',
             url: '/about',
-            icon: 'faHeart'
+            icon: 'faHeart',
+            access: 'all'
+
         }
         ,
         {
-            title: 'Superadmin',
-            url: '/superadmin',
-            icon: 'faHeart'
+            title: 'Login',
+            url: '/login',
+            icon: 'faHeart',
+            access: 'all'
         }
     ];
 
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
-        private statusBar: StatusBar
+        private statusBar: StatusBar,
     ) {
         this.initializeApp();
     }
@@ -76,4 +85,10 @@ export class AppComponent {
         });
 
     }
+
+    ngOnInit() {
+        console.info("ngOnInit");
+    }
+
+
 }
