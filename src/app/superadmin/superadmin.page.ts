@@ -4,6 +4,9 @@ import {FamousLastWord, FirebaseService, MyCounter} from '../firebase.service';
 
 import {RestApiService} from '../rest-api.service';
 import {LoadingController} from '@ionic/angular';
+import { Device } from '@ionic-native/device/ngx';
+import { IsDebug } from '@ionic-native/is-debug/ngx';
+
 
 
 @Component({
@@ -27,12 +30,21 @@ export class SuperadminPage implements OnInit {
 
     private subscription;
 
-    constructor(public api: RestApiService, private firebaseService: FirebaseService, public loadingController: LoadingController) {
+    constructor(public api: RestApiService,
+                private firebaseService: FirebaseService,
+                public loadingController: LoadingController,
+                private device: Device,
+                private isDebug : IsDebug
+                ) {
     }
 
     ngOnInit() {
         // this.getDataFromREST();
+        console.log('Device UUID is: ' + this.device.uuid);
         this.getFirebaseContent();
+        this.isDebug.getIsDebug()
+            .then(isDebug => console.log('Is debug: ', isDebug))
+            .catch(err => console.error("isDebug Error: "+err));
     }
 
     ngOnDestroy() {

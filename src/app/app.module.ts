@@ -11,6 +11,12 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {HttpClientModule} from '@angular/common/http';
 
+// Trying for unique identifier and admin management
+import { Device } from '@ionic-native/device/ngx';
+import { IsDebug } from '@ionic-native/is-debug/ngx';
+
+
+
 // Font Awesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -33,12 +39,15 @@ library.add(faBookDead, faChessRook, faQuestionCircle, faScroll);
         HttpClientModule,
         // Font Awesome
         FontAwesomeModule,
+
         //FireStore
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
     ],
     providers: [
         StatusBar,
+        Device,
+        IsDebug,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],

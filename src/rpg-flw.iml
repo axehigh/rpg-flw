@@ -8,7 +8,9 @@
       <sourceFolder url="file://$MODULE_DIR$/../plugins/cordova-plugin-device/src/android" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../plugins/cordova-plugin-ionic-keyboard/src/android" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../plugins/cordova-plugin-ionic-webview/src/android" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../dist" />
       <excludeFolder url="file://$MODULE_DIR$/../platforms" />
+      <excludeFolder url="file://$MODULE_DIR$/../tmp" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -20,7 +20,7 @@ export class FirebasePage implements OnInit {
     }
 
     ngOnInit() {
-        this.getDocumentAndWords(this.DOCUMENT_MASTER_ID);
+        this.getDocumentAndWords(this.DOCUMENT_ACCEPTED_ID);
     }
 
     ngOnDestroy() {

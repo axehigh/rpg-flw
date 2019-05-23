@@ -31,3 +31,18 @@ icon needs to be 1024x1024
 
 # Tutorials
 Firestore : https://devdactic.com/ionic-4-firebase-angularfire/
+
+### Info
+Using 0 as base for my app, until both android and ios is moved to new platform using MASTER
+
+
+### Issues 
+****
+Release version 1
+BUG: SEnding need to press twice
+* Admin only for web version
+* Move Recent into Original
+
+Release Version 2
+* Authentication
+* Favorites

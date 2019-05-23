@@ -101,7 +101,7 @@ export class SubmitPage implements OnInit {
             try {
                 // loading = await this.loadingController.create({message: 'Sending ...'});
                 // await loading.present();
-                console.info("Run check if the word exists from before");
+                console.info("Run check if the word exists from before 2");
                 // get counter
 
                 const result = this.counterFromSubmit().then(() => {
@@ -148,7 +148,7 @@ export class SubmitPage implements OnInit {
     async acceptSubmitted(acceptedWord: FamousLastWordItem) {
 
         if (this.acceptSubmitted && this.acceptedWords) {
-            console.info("Run check if the word exists from before");
+            console.info("Run check if the word exists from before 1");
             this.acceptedDocument.words.push(acceptedWord);
             this.firebaseService.updateWord(this.acceptedDocument, this.ACCEPTED_DOCUMENT).then(() => {
                 console.info("Added word to Accepted List");

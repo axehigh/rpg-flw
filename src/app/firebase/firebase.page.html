@@ -9,41 +9,38 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
+
+    <ion-segment>
+        <ion-segment-button (ionSelect)="submitted($event)">
+            <ion-label>Recent</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (ionSelect)="master($event)">
+            <ion-label>Original</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+    <ng-container *ngIf="!currentWords">
+        <div *ngFor="let n of [0,1,2]" padding>
+            <ion-skeleton-text></ion-skeleton-text>
+            <p>
+                <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+            </p>
+        </div>
+    </ng-container>
 
 
-    <ion-list>
-        <ion-item>
-            <ion-button (click)="master()">Master</ion-button>
-        </ion-item>
-        <ion-item>
-            <ion-button (click)="submitted()">Recent</ion-button>
-        </ion-item>
-    </ion-list>
-
-        <ng-container *ngIf="!currentWords">
-            <div *ngFor="let n of [0,1,2]" padding>
-                <ion-skeleton-text></ion-skeleton-text>
+    <ion-virtual-scroll *ngIf="currentWords && currentWords.length > 0"
+                        [items]="currentWords" approxItemHeight="100px">
+        <ion-item *virtualItem="let word;">
+            <ion-label text-wrap>
+                <ion-text>No# {{word['textid']}}</ion-text>
                 <p>
-                    <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+                    <ion-text [innerHTML]="word['text']"></ion-text>
                 </p>
-            </div>
-        </ng-container>
-
-
-        <ion-virtual-scroll *ngIf="currentWords && currentWords.length > 0"
-                            [items]="currentWords" approxItemHeight="100px">
-            <ion-item *virtualItem="let word;">
-                <ion-label text-wrap>
-                    <ion-text>No# {{word['textid']}}</ion-text>
-                    <p>
-                        <ion-text  [innerHTML]="word['text']"></ion-text>
-                    </p>
-                </ion-label>
-            </ion-item>
-        </ion-virtual-scroll>
-
-
+            </ion-label>
+        </ion-item>
+    </ion-virtual-scroll>
 
 
 </ion-content>
