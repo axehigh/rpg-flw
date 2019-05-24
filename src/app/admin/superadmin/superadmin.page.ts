@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
-import {FamousLastWord, FirebaseService, MyCounter} from '../firebase.service';
+import {FamousLastWord, FirebaseService, MyCounter} from '../../firebase.service';
 
-import {RestApiService} from '../rest-api.service';
+import {RestApiService} from '../../rest-api.service';
 import {LoadingController} from '@ionic/angular';
 import { Device } from '@ionic-native/device/ngx';
 import { IsDebug } from '@ionic-native/is-debug/ngx';

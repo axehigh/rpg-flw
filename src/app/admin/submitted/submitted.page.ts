@@ -1,18 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {FamousLastWord, FamousLastWordItem, FirebaseService, MyCounter} from '../firebase.service';
-
+import { Component, OnInit } from '@angular/core';
+import {FamousLastWord, FamousLastWordItem, FirebaseService, MyCounter} from '../../firebase.service';
 import {faTrashAlt, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 import {LoadingController, NavController, ToastController} from "@ionic/angular";
-
-import {AuthenticateService} from '../services/authentication.service';
-
+import {AuthenticateService} from '../../services/authentication.service';
 
 @Component({
-    selector: 'app-submit',
-    templateUrl: './submit.page.html',
-    styleUrls: ['./submit.page.scss'],
+  selector: 'app-submitted',
+  templateUrl: './submitted.page.html',
+  styleUrls: ['./submitted.page.scss'],
 })
-export class SubmitPage implements OnInit {
+export class SubmittedPage implements OnInit {
 
     //icons
     faTrashAlt = faTrashAlt;
@@ -185,8 +182,8 @@ export class SubmitPage implements OnInit {
     // }
 
 
-    submittedAdmin() {
+    superAdmin() {
         console.info("Superadmin");
-        this.navCtrl.navigateForward('/admin/submitted');
+        this.navCtrl.navigateForward('admin/superadmin');
     }
 }

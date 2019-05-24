@@ -10,7 +10,8 @@ import {
     faQuestionCircle,
     faDungeon,
     faHeart,
-    faScroll
+    faScroll,
+    faLock
 } from '@fortawesome/free-solid-svg-icons';
 
 import {AuthenticateService} from './services/authentication.service';
@@ -30,6 +31,7 @@ export class AppComponent {
     faDungeon = faDungeon;
     faHeart = faHeart;
     faScroll = faScroll;
+    faLock = faLock;
 
     public appPages = [
         {
@@ -61,7 +63,7 @@ export class AppComponent {
         {
             title: 'Login',
             url: '/login',
-            icon: 'faHeart',
+            icon: 'faLock',
             access: 'all'
         }
     ];
@@ -87,7 +89,7 @@ export class AppComponent {
     }
 
     ngOnInit() {
-        console.info("ngOnInit");
+        console.info('ngOnInit');
     }
 
 

@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Submitted Words
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="isAdmin">
+
+    <ion-button expand="full" (click)="superAdmin()">
+        <ion-title>Firestore operations</ion-title>
+    </ion-button>
+
+
+    <ion-header>Submitted</ion-header>
+
+    <ion-list *ngFor="let word of words">
+        <ion-item-sliding>
+            <!--<ion-item *virtualItem="let word;" color="primary">-->
+            <ion-item color="primary">
+                <ion-label text-wrap>
+                    <ion-text>No# {{word['id']}}</ion-text>
+                    <p>
+                        <ion-text [innerHTML]="word['text']"></ion-text>
+                    </p>
+                </ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+                <ion-item-option (click)="acceptSubmitted(word)" icon-only>
+                    <fa-icon color="light" [icon]="faCheckCircle"></fa-icon>
+                </ion-item-option>
+                <ion-item-option (click)="removeSubmittedItem(word)">
+                    <fa-icon color="light" [icon]="faTrashAlt"></fa-icon>
+                </ion-item-option>
+            </ion-item-options>
+
+        </ion-item-sliding>
+    </ion-list>
+
+
+    <ion-header>Accepted</ion-header>
+    <ion-list *ngFor="let word of acceptedWords">
+        <ion-item-sliding>
+            <!--<ion-item *virtualItem="let word;" color="primary">-->
+            <ion-item color="secondary">
+                <ion-label text-wrap>
+                    <ion-text>No# {{word['id']}}</ion-text>
+                    <p>
+                        <ion-text [innerHTML]="word['text']"></ion-text>
+                    </p>
+                </ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+                <!--<ion-item-option (click)="acceptSubmitted(word)" icon-only>-->
+                <!--<fa-icon color="medium" [icon]="faCheckCircle"></fa-icon>-->
+                <!--</ion-item-option>-->
+                <ion-item-option (click)="removeAcceptedItem(word)">
+                    <fa-icon color="medium" [icon]="faTrashAlt"></fa-icon>
+                </ion-item-option>
+            </ion-item-options>
+
+        </ion-item-sliding>
+    </ion-list>
+
+
+</ion-content>

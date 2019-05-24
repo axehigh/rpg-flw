@@ -19,7 +19,7 @@ import { IsDebug } from '@ionic-native/is-debug/ngx';
 // Font Awesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBookDead,faChessRook,faQuestionCircle ,faScroll} from '@fortawesome/free-solid-svg-icons';
+import { faBookDead,faChessRook,faQuestionCircle ,faScroll, faLock} from '@fortawesome/free-solid-svg-icons';
 
 //Firestore
 import { AngularFireModule } from 'angularfire2';
@@ -34,7 +34,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 
 
-library.add(faBookDead, faChessRook, faQuestionCircle, faScroll);
+library.add(faBookDead, faChessRook, faQuestionCircle, faScroll,faLock);
 
 firebase.initializeApp(environment.firebase);
 
