@@ -19,11 +19,23 @@
             <ion-card-content color="primary">
 
                 <ion-text
-                          [ngClass]="(word['text'].length > 150) ? 'text12' : 'text18' "
-                          color="primary" [innerHTML]="word['text']"></ion-text>
+                        [ngClass]="(word['text'].length > 150) ? 'text12' : 'text18' "
+                        color="primary" [innerHTML]="word['text']"></ion-text>
             </ion-card-content>
         </ion-card>
     </div>
+
+
+    <div>
+        <ion-button shape="round"
+                    size="large"
+                    expand="block"
+                    color="secondary"
+                    (click)="shareThis()">
+            Share
+        </ion-button>
+    </div>
+
     <div class="footer-div">
         <ion-button class="footer-button" shape="round" size="large"
                     expand="block" color="secondary" (click)="getRandom()">

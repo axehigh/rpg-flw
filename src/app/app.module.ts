@@ -5,6 +5,8 @@ import {RouteReuseStrategy} from '@angular/router';
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
+// Social Sharing
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -62,7 +64,10 @@ firebase.initializeApp(environment.firebase);
         IsDebug,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-        AuthenticateService
+        AuthenticateService,
+        // Social Sharing
+        SocialSharing
+
     ],
     bootstrap: [AppComponent]
 })

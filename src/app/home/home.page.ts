@@ -5,6 +5,9 @@ import {FirebaseService} from '../firebase.service';
 import {faBookDead, faChessRook} from '@fortawesome/free-solid-svg-icons';
 import {AuthenticateService} from '../services/authentication.service';
 
+// Social Sharing
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 
 @Component({
     selector: 'app-home',
@@ -21,7 +24,8 @@ export class HomePage {
     constructor(
         public loadingController: LoadingController,
         private fireBaseService: FirebaseService,
-        private authService: AuthenticateService) {
+        private authService: AuthenticateService,
+        private socialShare: SocialSharing) {
     }
 
     //icons
@@ -70,4 +74,12 @@ export class HomePage {
     }
 
 
+    shareThis() {
+        this.socialShare.canShareViaEmail().then(() => {
+            console.info('Can share via email');
+        }).catch(() => {
+            // Sharing via email is not possible
+            console.info('Cannot share via email');
+        });
+    }
 }

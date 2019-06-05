@@ -47,7 +47,8 @@ export class SubmittedPage implements OnInit {
                 public loadingController: LoadingController,
                 public toastController: ToastController,
                 private authService: AuthenticateService,
-                private navCtrl: NavController) {
+                private navCtrl: NavController
+                ) {
     }
 
     ngOnInit() {
